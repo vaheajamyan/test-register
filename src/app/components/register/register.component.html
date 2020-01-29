@@ -1,67 +1,48 @@
-<div class="registration" *ngIf="!successed">
-    <form class="registration__form" (ngSubmit)="onSubmit()" [formGroup]="registerFormGroup">
-        <fieldset class="registration__fieldset">
-            <legend class="registration__legend">Регистрация</legend>
-            <div class="registration__fieldset-inner">
-                <div class="registration__row">
-                    <label class="registration__label">
-                        <input class="registration__input" type="text" name="first-name" 
-                                aria-label="Напишите ваше имя" formControlName="username" required="required"
-                                [ngClass]="{
-                                'registration__input--invalid': (username.invalid && (username.dirty || username.touched)),
-                                'registration__input--valid' : (username.valid)
-                                }"
-                        >
-                        <span class="registration__label-text">Ваше имя</span>
-                        <span class="registration__input-invalid-text">Неправильно заполнено поле</span>
-                    </label>
-                </div>
-                <div class="registration__row">
-                    <label class="registration__label">
-                        <input class="registration__input" type="text" name="phone-number" 
-                                aria-label="Напишите номер телефона" required="required" formControlName="phoneNumber"
-                                [ngClass]="{
-                                'registration__input--invalid': (phoneNumber.invalid && (phoneNumber.dirty || phoneNumber.touched)),
-                                'registration__input--valid' : (phoneNumber.valid)
-                                }"
-                        >
-                        <span class="registration__label-text">Ваш телефон</span>
-                        <span class="registration__input-invalid-text">Неправильно заполнено поле</span>
-                    </label>
-                </div>
-                <div class="registration__row">
-                    <label class="registration__label">
-                        <input class="registration__input" type="text" name="email" 
-                                aria-label="Напишите ваш электронный адрес" required="required" formControlName="email"
-                                [ngClass]="{
-                                'registration__input--invalid': (email.invalid && (email.dirty || email.touched)),
-                                'registration__input--valid' : (email.valid)
-                                }"       
-                        >
-                        <span class="registration__label-text">E-mail</span>
-                        <span class="registration__input-invalid-text">Неправильно заполнено поле</span>
-                    </label>
-                </div>
-                <div class="registration__row">
-                    <label class="registration__label">
-                        <input class="registration__input" type="text" name="city" 
-                                aria-label="Напишите Ваш город" formControlName="city">
-                        <span class="registration__label-text">Ваш город</span>
-                        <span class="registration__input-invalid-text">Неправильно заполнено поле</span>
-                    </label>
-                </div>
-                <div class="registration__row">
-                    <div class="registration__license-agreement">
-                        Нажимая кнопку вы соглашаетесь с <a href="" class="registration__license-agreement-link">условиями
-                        и правилами конфидициальности</a>
-                    </div>
-                    <button type="submit" class="registration__submit">Регистрация</button>
-                </div>
-            </div>
-        </fieldset>
-    </form>
-    <button type="button" class="registration__close" routerLink="/home">
-        <span class="registration__close-text">Закрыть</span>
-    </button>
+<div *ngIf="!successed" class="registration">
+  <form (ngSubmit)="onSubmit()" [formGroup]="registerFormGroup" class="registration__form">
+    <fieldset class="registration__fieldset">
+      <legend class="registration__legend">Регистрация</legend>
+      <div class="registration__fieldset-inner">
+        <app-validation-input [errorTexts]="errors"
+                              [errors]="['required','minlength']"
+                              [formGroup]="registerFormGroup"
+                              controlName="username"
+                              title="Ваше имя"
+                              type="text"
+        >
+        </app-validation-input>
+        <app-validation-input [errorTexts]="errors"
+                              [errors]="['required']"
+                              [formGroup]="registerFormGroup"
+                              controlName="phoneNumber"
+                              title="Ваш телефон"
+                              type="text"
+        >
+        </app-validation-input>
+        <app-validation-input [errorTexts]="errors"
+                              [errors]="['required', 'email']"
+                              [formGroup]="registerFormGroup"
+                              controlName="email"
+                              title="E-mail"
+                              type="text"
+        >
+        </app-validation-input>
+        <app-validation-input [errorTexts]="errors"
+                              [formGroup]="registerFormGroup"
+                              controlName="city"
+                              title="Ваш город"
+                              type="text">
+        </app-validation-input>
+        <div class="registration__row">
+          <div class="registration__license-agreement">
+            Нажимая кнопку вы соглашаетесь с <a class="registration__license-agreement-link" href="">условиями
+            и правилами конфидициальности</a>
+          </div>
+          <app-button color="primary" name="Регистрация" type="submit"></app-button>
+        </div>
+      </div>
+    </fieldset>
+  </form>
+  <app-close-button routerLink="/home" title="Закрыть"></app-close-button>
 </div>
 <app-password *ngIf="successed"></app-password>

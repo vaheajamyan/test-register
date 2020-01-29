@@ -1,0 +1,36 @@
+.button__btn {
+  display: block;
+  width: 100%;
+  min-height: 45px;
+  border: 0;
+  border-radius: 7px;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.button__btn:hover {
+  cursor: pointer;
+}
+
+.button__btn-primary {
+  background-color: #2e82ff;
+}
+
+.button__btn-secondary {
+  background-color: #6c757d;
+}
+
+.button__btn-success {
+  background-color: #28a745;
+}
+
+.button__btn-danger {
+  background-color: #dc3545;
+}
+
+.button__btn-warning {
+  background-color: #ffc107;
+  color: #000000
+}
+

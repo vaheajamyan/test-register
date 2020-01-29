@@ -1,0 +1,20 @@
+<ng-container [formGroup]="formGroup">
+  <div class="registration__row">
+    <label class="registration__label">
+      <input [formControlName]="controlName"
+             [required]="required"
+             [type]="type"
+             [ngClass]="{
+                'registration__input--invalid': invalid,
+                'registration__input--valid' : valid
+              }"
+             class="registration__input">
+      <span class="registration__label-text">{{title}}</span>
+      <ng-container *ngFor="let key of errors">
+        <span *ngIf="formControl.errors && formControl.errors[key] && errorTexts[key]"
+              class="registration__input-invalid-text">{{errorTexts[key]}}</span>
+      </ng-container>
+
+    </label>
+  </div>
+</ng-container>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 
 
@@ -10,19 +10,25 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 export class PasswordComponent implements OnInit {
   public passwordGroup: FormGroup = new FormGroup({
     password: new FormControl(null, [Validators.required, Validators.minLength(6)]),
-    confirmPassword: new FormControl(null, [ Validators.required, Validators.minLength(6), this.comparePassword()]),
-  })
-  public successed: boolean = false;
+    confirmPassword: new FormControl(null, [Validators.required, Validators.minLength(6), this.comparePassword()]),
+  });
+  public successed = false;
+  public errors: { [key: string]: string } = {
+    required: 'Неправильно заполнено поле',
+    matchPassword: 'Пароль не совпадает',
+    minlength: 'Минимум 6 символа',
+  };
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }
 
   public onSubmit(): void {
     this.passwordGroup.markAllAsTouched();
-    this.successed =  this.passwordGroup.valid ? true : false
-    console.log(this.successed)
+    this.successed = this.passwordGroup.valid;
+    console.log(this.successed);
   }
 
   private comparePassword(): { [key: string]: boolean } | any {
@@ -47,5 +53,4 @@ export class PasswordComponent implements OnInit {
   get confirmPassword(): FormControl {
     return this.passwordGroup.get('confirmPassword') as FormControl;
   }
-
 }

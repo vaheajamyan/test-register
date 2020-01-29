@@ -2,7 +2,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RegisterRoutingModule } from './register-routing.module';
-import { ReactiveFormsModule,FormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { SharedModule} from '../shared/shared.module';
 
 // Components
 import { RegisterComponent } from '../../components/register/register.component';
@@ -20,7 +21,8 @@ import { RegisterSuccessComponent } from '../../components/register-success/regi
     CommonModule,
     RegisterRoutingModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    SharedModule
   ]
 })
 export class RegisterModule { }

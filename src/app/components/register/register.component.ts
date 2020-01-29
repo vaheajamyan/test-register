@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 
-
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -13,9 +12,14 @@ export class RegisterComponent implements OnInit {
     phoneNumber: new FormControl(null, Validators.required),
     email: new FormControl(null, [Validators.required, Validators.email]),
     city: new FormControl(null)
-  })
+  });
 
-  public successed: boolean = false;
+  public successed = false;
+  public errors: { [key: string]: string } = {
+    required: 'Неправильно заполнено поле',
+    email: 'Неверный адрес электронной почты',
+    minlength: 'Минимум 4 символа',
+  };
 
   constructor() {}
 
@@ -24,20 +28,7 @@ export class RegisterComponent implements OnInit {
 
   public onSubmit(): void {
       this.registerFormGroup.markAllAsTouched();
-      this.successed =  this.registerFormGroup.valid ? true : false
-      console.log(this.successed)
+      this.successed =  this.registerFormGroup.valid;
+      console.log(this.registerFormGroup);
   }
-  
-  get username(): FormControl {
-    return this.registerFormGroup.get('username') as FormControl;
-  }
-
-  get phoneNumber(): FormControl {
-    return this.registerFormGroup.get('phoneNumber') as FormControl;
-  }
-
-  get email(): FormControl {
-    return this.registerFormGroup.get('email') as FormControl
-  }
-
 }
