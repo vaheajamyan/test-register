@@ -1,19 +1,17 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { DefaultComponent } from './components/default/default.component';
-import { HomeComponent } from './components/home/home.component';
-
+import { DefaultPage } from './pages/default/default-page.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
-  {path: '', component: DefaultComponent,
+  {path: '', component: DefaultPage,
     children: [
         {
           path: 'home',
           loadChildren: () => import('./modules/home/home.module').then(m => m.HomeModule)
         },
         {
-          path: 'register',
+          path: '',
           loadChildren: () => import('./modules/register/register.module').then(m => m.RegisterModule)
         }
     ]

@@ -3,15 +3,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-
 // Components
 
-import { RegisterComponent } from '../../components/register/register.component';
+import { RegisterComponent } from '../../components/sign-up/register/register.component';
 
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'sign-up',
     component: RegisterComponent
   }
 ];

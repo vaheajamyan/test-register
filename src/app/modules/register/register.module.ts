@@ -6,10 +6,9 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { SharedModule} from '../shared/shared.module';
 
 // Components
-import { RegisterComponent } from '../../components/register/register.component';
-import { PasswordComponent } from '../../components/password/password.component';
-import { RegisterSuccessComponent } from '../../components/register-success/register-success.component';
-
+import { RegisterComponent } from '../../components/sign-up/register/register.component';
+import { PasswordComponent } from '../../components/sign-up/password/password.component';
+import { RegisterSuccessComponent } from '../../components/sign-up/register-success/register-success.component';
 
 @NgModule({
   declarations: [

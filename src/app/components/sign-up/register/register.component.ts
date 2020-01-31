@@ -29,6 +29,5 @@ export class RegisterComponent implements OnInit {
   public onSubmit(): void {
       this.registerFormGroup.markAllAsTouched();
       this.successed =  this.registerFormGroup.valid;
-      console.log(this.registerFormGroup);
   }
 }

@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 
-
 @Component({
   selector: 'app-password',
   templateUrl: './password.component.html',
@@ -28,7 +27,6 @@ export class PasswordComponent implements OnInit {
   public onSubmit(): void {
     this.passwordGroup.markAllAsTouched();
     this.successed = this.passwordGroup.valid;
-    console.log(this.successed);
   }
 
   private comparePassword(): { [key: string]: boolean } | any {
@@ -48,9 +46,5 @@ export class PasswordComponent implements OnInit {
 
   get password(): FormControl {
     return this.passwordGroup.get('password') as FormControl;
-  }
-
-  get confirmPassword(): FormControl {
-    return this.passwordGroup.get('confirmPassword') as FormControl;
   }
 }

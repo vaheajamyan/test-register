@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-default',
-  templateUrl: './default.component.html',
-  styleUrls: ['./default.component.css']
+  templateUrl: './default-page.component.html',
+  styleUrls: ['./default-page.component.css']
 })
-export class DefaultComponent implements OnInit {
+export class DefaultPage implements OnInit {
 
   constructor() { }
 
